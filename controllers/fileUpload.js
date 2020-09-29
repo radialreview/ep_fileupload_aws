@@ -32,8 +32,8 @@ var storageClass = pluginSettings.storage_class ||"REDUCED_REDUNDANCY";
 
 
 var s3 = new AWS.S3({
-    accessKeyId: S3_ACCESS_KEY,//config.get('S3_ACCESS_KEY'),
-    secretAccessKey: S3_SECRET_KEY,//config.get('S3_SECRET_KEY'),
+    // accessKeyId: S3_ACCESS_KEY,//config.get('S3_ACCESS_KEY'),
+    // secretAccessKey: S3_SECRET_KEY,//config.get('S3_SECRET_KEY'),
     apiVersion: '2006-03-01'
 });
 var s3Stream = require('s3-upload-stream')(s3);
