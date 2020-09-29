@@ -29,7 +29,6 @@ var S3_SECRET_KEY = pluginSettings.S3_SECRET_KEY;
 var bucket = pluginSettings.bucket;
 var base_key = pluginSettings.base_key || "";
 var storageClass = pluginSettings.storage_class ||"REDUCED_REDUNDANCY";
-var urlBase = "https://s3.amazonaws.com/";
 
 
 var s3 = new AWS.S3({
@@ -147,7 +146,8 @@ exports.onRequest = function (req, res) {
 		// if(typeof req.headers['referer'] != "undefined" && typeof matches[1] != "undefined"){
 		  // urlBase = matches[1];
 		// }
-		res.send(eejs.require("ep_fileupload_aws/templates/fileUploaded.ejs", {upload: urlBase + /*bucket +*/ "up/" + key}, module));
+		var location = `https://${bucket}.s3.amazonaws.com/up/${key}`;
+		res.send(eejs.require("ep_fileupload_aws/templates/fileUploaded.ejs", {upload: location}, module));
 
 	});
 	return;
