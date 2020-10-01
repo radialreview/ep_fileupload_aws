@@ -17,7 +17,7 @@ exports.expressServer = function (hook_name, args, cb) {
   args.app.get('/up/:filename(*)', function(req, res) { 
     var url = req.params.filename.replace(/\.\./g, '').split("?")[0];
     //var filePath = path.normalize(path.join(__dirname, "upload", url));
-    var location = 'https://' + bucket + '.s3.amazonaws.com/' + base_key + url;
+    var location = `https://${bucket}.s3.amazonaws.com/${base_key}${url}`;
 	res.writeHead(301,  {Location: location});
 	res.end();
     //res.sendfile(filePath, { maxAge: exports.maxAge });

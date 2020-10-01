@@ -146,7 +146,7 @@ exports.onRequest = function (req, res) {
 		// if(typeof req.headers['referer'] != "undefined" && typeof matches[1] != "undefined"){
 		  // urlBase = matches[1];
 		// }
-		var location = 'https://' + bucket + '.s3.amazonaws.com/' + key;
+		var location = `https://${bucket}.s3.amazonaws.com/up/${key}`;
 		res.send(eejs.require("ep_fileupload_aws/templates/fileUploaded.ejs", {upload: location}, module));
 
 	});
